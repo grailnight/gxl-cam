@@ -1,0 +1,18 @@
+# Gradle / Android Studio
+.gradle/
+build/
+/app/build/
+/app/.cxx/
+.idea/
+*.iml
+local.properties
+captures/
+.externalNativeBuild/
+.kotlin/
+
+# libjxl sources fetched at build time
+/.deps/
+
+# Signing
+*.jks
+*.keystore

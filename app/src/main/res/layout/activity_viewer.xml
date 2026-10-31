@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
+
+    <io.github.grailnight.gxlcam.ui.ZoomImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:id="@+id/info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:background="@color/scrim"
+        android:padding="12dp"
+        android:textColor="@android:color/white"
+        android:textSize="13sp"
+        tools:text="GXL_20261031_120000_000.jxl\n4080×3072 · 2.4 МБ · VarDCT" />
+
+    <LinearLayout
+        android:id="@+id/actions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/scrim"
+        android:orientation="horizontal"
+        android:padding="4dp">
+
+        <Button
+            android:id="@+id/shareButton"
+            style="@style/BarButton"
+            android:text="@string/share" />
+
+        <Button
+            android:id="@+id/exportButton"
+            style="@style/BarButton"
+            android:text="@string/export_jpeg" />
+
+        <Button
+            android:id="@+id/openButton"
+            style="@style/BarButton"
+            android:text="@string/open_file" />
+    </LinearLayout>
+</FrameLayout>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GXL Cam</string>
+    <string name="viewer_title">JXL просмотр</string>
+    <string name="shutter">Снять</string>
+    <string name="switch_camera">Сменить камеру</string>
+    <string name="settings">Настройки</string>
+    <string name="last_photo">Последний снимок</string>
+    <string name="permission_needed">Для съёмки нужен доступ к камере</string>
+
+    <string name="settings_title">Настройки JPEG XL</string>
+    <string name="mode_title">Способ кодирования</string>
+    <string name="mode_direct">Прямое кодирование: кадр YUV → JXL</string>
+    <string name="mode_direct_hint">Без промежуточного JPEG: лучше качество на байт, доступно «без потерь» (q100) и Display P3.</string>
+    <string name="mode_jpeg">JPEG камеры → JXL без потерь</string>
+    <string name="mode_jpeg_hint">Сжимает JPEG с камеры на ~20 % без единой потери; исходный JPEG можно восстановить бит-в-бит.</string>
+    <string name="wide_gamut">Широкий цветовой охват (Display P3)</string>
+    <string name="wide_gamut_unsupported">Display P3 недоступен для этой камеры</string>
+    <string name="ok">Готово</string>
+    <string name="cancel">Отмена</string>
+
+    <string name="share">Поделиться</string>
+    <string name="export_jpeg">В JPEG</string>
+    <string name="open_file">Открыть…</string>
+    <string name="no_photos">Снимков пока нет</string>
+</resources>
