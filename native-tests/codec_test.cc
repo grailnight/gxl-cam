@@ -207,6 +207,12 @@ int main(int argc, char** argv) {
                 argv[a], jpeg.size(), tj.size(), 100.0 * (1.0 - double(tj.size()) / jpeg.size()),
                 info.width, info.height, info.orientation,
                 rec == jpeg ? "reconstruction bit-exact" : "reconstruction MISMATCH");
+    if (std::string(argv[a]).find("orient6") != std::string::npos) {
+      // EXIF orientation 6 must be carried into the codestream; 800x600 stored.
+      CHECK(info.orientation == 6 && info.width == 600 && info.height == 800);
+    } else {
+      CHECK(info.orientation == 1 && info.width == 800 && info.height == 600);
+    }
     std::vector<uint8_t> px(size_t(info.width) * info.height * 4);
     CHECK(gxl::DecodeRgba8(tj.data(), tj.size(), gxl::ColorSpace::kDisplayP3, px.data(),
                            info.width * 4, info.width, info.height, 0, &actual, &err));

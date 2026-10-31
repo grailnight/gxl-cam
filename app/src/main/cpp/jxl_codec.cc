@@ -189,8 +189,11 @@ bool Probe(const uint8_t* data, size_t size, ImageInfo* out_info,
     return false;
   }
   JxlDecoderPtr dec = JxlDecoderMake(nullptr);
+  // Keep orientation so the basic info reports the real orientation and the
+  // stored (un-oriented) size; the oriented size is computed below.
   if (JxlDecoderSubscribeEvents(dec.get(), JXL_DEC_BASIC_INFO) !=
           JXL_DEC_SUCCESS ||
+      JxlDecoderSetKeepOrientation(dec.get(), JXL_TRUE) != JXL_DEC_SUCCESS ||
       JxlDecoderSetInput(dec.get(), data, size) != JXL_DEC_SUCCESS) {
     *error = "decoder setup failed";
     return false;
@@ -249,9 +252,10 @@ bool DecodeRgba8(const uint8_t* data, size_t size, ColorSpace target,
           *error = "JxlDecoderGetBasicInfo failed";
           return false;
         }
-        const bool transposed = info.orientation > JXL_ORIENT_ROTATE_180;
-        img_w = transposed ? info.ysize : info.xsize;
-        img_h = transposed ? info.xsize : info.ysize;
+        // Orientation is applied by the decoder (keep_orientation is off), so
+        // libjxl already reports the oriented size here.
+        img_w = info.xsize;
+        img_h = info.ysize;
         if (out_width == 0 || out_height == 0 || out_width > img_w ||
             out_height > img_h || out_stride < size_t{out_width} * 4) {
           *error = "bad output size";
